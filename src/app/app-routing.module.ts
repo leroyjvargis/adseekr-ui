@@ -11,6 +11,11 @@ import {
 
 const routes: Routes = [
   {
+    path: 'home',
+    loadChildren: () => import('./home/home.module')
+      .then(m => m.HomeModule),
+  },
+  {
     path: 'auth',
     component: NbAuthComponent,
     children: [
@@ -40,8 +45,8 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'auth', pathMatch: 'full' },
-  { path: '**', redirectTo: 'auth' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home' },
 ];
 
 const config: ExtraOptions = {
