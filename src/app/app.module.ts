@@ -13,7 +13,7 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
+import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 
 import { AuthGuard } from './auth-guard.service';
 
@@ -34,21 +34,28 @@ import { AuthGuard } from './auth-guard.service';
     CoreModule.forRoot(),
     NbAuthModule.forRoot({
       strategies: [
-        NbPasswordAuthStrategy.setup({
+        NbDummyAuthStrategy.setup({
           name: 'email',
-
-          baseEndpoint: '',
-           login: {
-             // ...
-             endpoint: '/api/auth/login',
-             method: 'post',
-           },
-           register: {
-             // ...
-             endpoint: '/api/auth/register',
-             method: 'post',
-           },
         }),
+        // NbPasswordAuthStrategy.setup({
+        //   name: 'email',
+
+        //   baseEndpoint: '',
+        //    login: {
+        //      // ...
+        //      endpoint: '/api/auth/login',
+        //      method: 'post',
+        //    },
+        //    register: {
+        //      // ...
+        //      endpoint: '/api/auth/register',
+        //      method: 'post',
+        //    },
+        //    logout: {
+        //     endpoint: '/auth/sign-out',
+        //     method: 'post',
+        //   },
+        // }),
       ],
       forms: {
         login: {
@@ -59,6 +66,10 @@ import { AuthGuard } from './auth-guard.service';
             success: true,
             error: true,
           },
+        },
+        logout: {
+          redirectDelay: 500,
+          strategy: 'email',
         },
       },
     }),

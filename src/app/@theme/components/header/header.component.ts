@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
-
+import { Router } from '@angular/router';
 // import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
-import { map, takeUntil } from 'rxjs/operators';
+import { map, takeUntil, filter } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
   user: any = { name: 'Nick Jones', picture: 'assets/images/nick.png' };
-
+  userContextMenu = 'user-context-menu';
   themes = [
     {
       value: 'default',
@@ -44,6 +44,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private menuService: NbMenuService,
               private themeService: NbThemeService,
               // private userService: UserData,
+              private router: Router,
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService) {
   }
@@ -65,6 +66,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
       )
       .subscribe(themeName => this.currentTheme = themeName);
+
+      this.menuService.onItemClick()
+      .pipe(filter(({ tag }) => tag === this.userContextMenu))
+      .subscribe(tag => {
+        if (tag.item.title === 'Log out') {
+          this.router.navigate(['auth/logout']);
+        }
+      });
   }
 
   ngOnDestroy() {
