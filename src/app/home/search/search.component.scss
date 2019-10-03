@@ -1,0 +1,19 @@
+.ip-keyword {
+    border: 0px;
+    border-bottom: 1px solid #edf1f7;
+    color: #1a2138;
+    font-family: Open Sans, sans-serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 3rem;
+    width: 85%;
+}
+
+.ip-keyword:focus {
+    outline: none;
+}
+
+.dates {
+    font-size: 0.8em;
+    font-style: italic;
+}

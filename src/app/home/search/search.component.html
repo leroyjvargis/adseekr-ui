@@ -1,3 +1,25 @@
-<p>
-  search works!
-</p>
+<nb-card accent="info">
+  <nb-card-header>Search by keyword</nb-card-header>
+  <nb-card-body>
+    <input type="text" class="ip-keyword" placeholder="Enter keyword...">
+    <button nbButton status="primary" size="giant" style="float:right">Search</button>
+  </nb-card-body>
+</nb-card>
+
+<div class="row">
+  <div class="col-md-4" *ngFor="let item of data">
+    <nb-card>
+      <nb-card-header><b>{{ item.title }}</b></nb-card-header>
+      <nb-card-body>
+        <i>{{ item.content }}</i>
+        <div>
+          <span class="dates">First seen: {{ item.first_seen }}</span>
+          <span class="dates" style="float: right">Last seen: {{ item.last_seen }}</span>
+        </div>
+      </nb-card-body>
+      <nb-card-footer>
+        <a href="#">{{ item.company }}</a>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+</div>

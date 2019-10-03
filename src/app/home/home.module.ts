@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
-import { NbMenuModule } from '@nebular/theme';
+import { NbMenuModule,
+  NbCardModule,
+  NbInputModule,
+  NbButtonModule,
+ } from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
 import { HomeComponent } from './home.component';
@@ -11,9 +15,13 @@ import { SearchComponent } from './search/search.component';
   declarations: [HomeComponent, SearchComponent],
   imports: [
     HomeRoutingModule,
-    ThemeModule,
-    NbMenuModule,
     MiscellaneousModule,
+    ThemeModule,
+
+    NbMenuModule,
+    NbCardModule,
+    NbInputModule,
+    NbButtonModule,
   ],
 })
 export class HomeModule { }
