@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
-  user: any = { name: 'Nick Jones', picture: 'assets/images/nick.png' };
+  user: any = { name: 'Admin Adseekr', picture: 'assets/images/nick.png' };
   userContextMenu = 'user-context-menu';
   themes = [
     {
