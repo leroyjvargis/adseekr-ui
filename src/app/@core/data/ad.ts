@@ -7,7 +7,7 @@ export interface Ad {
   first_seen: string;
   last_seen: string;
   times_seen: number;
-  url: string;
+  display_url: string;
 }
 
 export abstract class AdData {

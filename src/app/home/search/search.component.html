@@ -18,7 +18,7 @@
         </div>
       </nb-card-body>
       <nb-card-footer>
-        <a href="{{ item.url }}" target="_blank">{{ item.advertiser }}</a>
+        <a [href]="'http://' + item.display_url" target="_blank">{{ item.advertiser }}</a>
       </nb-card-footer>
     </nb-card>
   </div>
