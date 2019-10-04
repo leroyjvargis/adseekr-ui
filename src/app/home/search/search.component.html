@@ -1,8 +1,8 @@
 <nb-card accent="info">
   <nb-card-header>Search by keyword</nb-card-header>
   <nb-card-body>
-    <input type="text" class="ip-keyword" placeholder="Enter keyword...">
-    <button nbButton status="primary" size="giant" style="float:right">Search</button>
+    <input type="text" class="ip-keyword" placeholder="Enter keyword..." [(ngModel)]="keyword">
+    <button nbButton status="primary" size="giant" style="float:right" (click)="onSearchBtnClk()">Search</button>
   </nb-card-body>
 </nb-card>
 
@@ -11,14 +11,14 @@
     <nb-card>
       <nb-card-header><b>{{ item.title }}</b></nb-card-header>
       <nb-card-body>
-        <i>{{ item.content }}</i>
+        <i>{{ item.body }}</i>
         <div>
           <span class="dates">First seen: {{ item.first_seen }}</span>
           <span class="dates" style="float: right">Last seen: {{ item.last_seen }}</span>
         </div>
       </nb-card-body>
       <nb-card-footer>
-        <a href="#">{{ item.company }}</a>
+        <a href="{{ item.url }}" target="_blank">{{ item.advertiser }}</a>
       </nb-card-footer>
     </nb-card>
   </div>

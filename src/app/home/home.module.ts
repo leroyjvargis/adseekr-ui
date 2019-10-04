@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 import { NbMenuModule,
   NbCardModule,
   NbInputModule,
@@ -14,6 +16,7 @@ import { SearchComponent } from './search/search.component';
 @NgModule({
   declarations: [HomeComponent, SearchComponent],
   imports: [
+    FormsModule,
     HomeRoutingModule,
     MiscellaneousModule,
     ThemeModule,
