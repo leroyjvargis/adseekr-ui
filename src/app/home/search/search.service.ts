@@ -3,6 +3,8 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Ad } from '../../@core/data/ad';
 import { NbAuthService } from '@nebular/auth';
 
+import { environment } from '../../../environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -23,6 +25,6 @@ export class SearchService {
       }),
     };
 
-    return this.httpClient.get<Ad[]>('api/search?keyword=' + keyword, httpOptions);
+    return this.httpClient.get<Ad[]>(environment.baseUrl + 'search?keyword=' + keyword, httpOptions);
   }
 }

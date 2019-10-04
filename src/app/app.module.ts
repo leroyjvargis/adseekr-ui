@@ -13,7 +13,8 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-import { 
+
+import {
   NbPasswordAuthStrategy,
   NbAuthModule,
   NbDummyAuthStrategy,
@@ -22,6 +23,7 @@ import {
 } from '@nebular/auth';
 
 import { AuthGuard } from './auth-guard.service';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -51,16 +53,16 @@ import { AuthGuard } from './auth-guard.service';
           baseEndpoint: '',
            login: {
              // ...
-             endpoint: '/api/auth/login',
+             endpoint: environment.baseUrl + 'auth/login',
              method: 'post',
            },
            register: {
              // ...
-             endpoint: '/api/auth/register',
+             endpoint: environment.baseUrl + 'auth/register',
              method: 'post',
            },
            logout: {
-            endpoint: '/api/auth/sign-out',
+            endpoint: environment.baseUrl + 'auth/sign-out',
             method: 'post',
           },
         }),
