@@ -3,7 +3,6 @@ import { MENU_ITEMS } from './side-menu-items';
 
 @Component({
   selector: 'ngx-home',
-  styleUrls: ['./home.component.scss'],
   template: `
     <ngx-one-column-layout>
       <nb-menu [items]="menu"></nb-menu>

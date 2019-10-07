@@ -17,8 +17,6 @@ import {
 import {
   NbPasswordAuthStrategy,
   NbAuthModule,
-  NbDummyAuthStrategy,
-  NbAuthJWTToken,
   NbAuthSimpleToken,
 } from '@nebular/auth';
 
@@ -42,9 +40,6 @@ import { environment } from '../environments/environment';
     CoreModule.forRoot(),
     NbAuthModule.forRoot({
       strategies: [
-        // NbDummyAuthStrategy.setup({
-        //   name: 'email',
-        // }),
         NbPasswordAuthStrategy.setup({
           name: 'email',
           token: {
