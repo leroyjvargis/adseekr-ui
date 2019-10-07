@@ -4,7 +4,7 @@ import { SearchService } from './search.service';
 @Component({
   selector: 'ngx-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
+  styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
   data: Ad[];
