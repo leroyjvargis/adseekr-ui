@@ -31,6 +31,7 @@ The codebase for the UI for AdSeekr, make with Angular based on the Nebular them
 
 
 <!-- GETTING STARTED -->
+## Getting Started
 
 To get a local copy up and running follow these simple steps.
 
@@ -62,7 +63,7 @@ npm start
 npm test
 ```
 
-4. Build
+5. Build
 ```sh
 npm build
 ```
@@ -73,7 +74,7 @@ npm build
 
 If you want to change the API URL to a local server, simply edit src/environments/environment.ts and change baseUrl to the local server's URL (eg. localhost:3000/api)
 
-
+Note: Push to repo can only be done if linting is successful. 
 <!-- ROADMAP -->
 ## Roadmap
 
