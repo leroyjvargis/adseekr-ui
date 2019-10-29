@@ -21,7 +21,7 @@ export class SearchService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        'Authorization': this.token,
+        'Authorization': 'Bearer ' + this.token,
       }),
     };
 

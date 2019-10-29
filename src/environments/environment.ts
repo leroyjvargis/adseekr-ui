@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8080/',
+  baseUrl: 'https://gd4o01abkl.execute-api.us-east-1.amazonaws.com/test/',
 };

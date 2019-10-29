@@ -17,7 +17,7 @@ import {
 import {
   NbPasswordAuthStrategy,
   NbAuthModule,
-  NbAuthSimpleToken,
+  NbAuthJWTToken,
 } from '@nebular/auth';
 
 import { AuthGuard } from './auth-guard.service';
@@ -43,7 +43,8 @@ import { environment } from '../environments/environment';
         NbPasswordAuthStrategy.setup({
           name: 'email',
           token: {
-            class: NbAuthSimpleToken,
+            class: NbAuthJWTToken,
+            key: 'token',
           },
           baseEndpoint: '',
            login: {
