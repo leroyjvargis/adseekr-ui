@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
@@ -17,7 +17,9 @@ import {
 import {
   NbPasswordAuthStrategy,
   NbAuthModule,
-  NbAuthSimpleToken,
+  NbAuthJWTToken,
+  NbAuthJWTInterceptor,
+  NB_AUTH_TOKEN_INTERCEPTOR_FILTER,
 } from '@nebular/auth';
 
 import { AuthGuard } from './auth-guard.service';
@@ -43,22 +45,23 @@ import { environment } from '../environments/environment';
         NbPasswordAuthStrategy.setup({
           name: 'email',
           token: {
-            class: NbAuthSimpleToken,
+            class: NbAuthJWTToken,
           },
           baseEndpoint: '',
-           login: {
-             // ...
-             endpoint: environment.baseUrl + 'auth/login',
-             method: 'post',
-           },
-           register: {
-             // ...
-             endpoint: environment.baseUrl + 'auth/register',
-             method: 'post',
-           },
-           logout: {
-            endpoint: environment.baseUrl + 'auth/sign-out',
+          login: {
+            // ...
+            endpoint: environment.baseUrl + 'auth/login',
             method: 'post',
+          },
+          register: {
+            // ...
+            endpoint: environment.baseUrl + 'auth/register',
+            method: 'post',
+            // tslint:disable-next-line: max-line-length
+            defaultMessages: ['Registration successful! Please activate your account by visiting the link in the confirmation email before logging in.'],
+          },
+          logout: {
+            endpoint: '',
           },
         }),
       ],
@@ -75,12 +78,27 @@ import { environment } from '../environments/environment';
         logout: {
           redirectDelay: 500,
           strategy: 'email',
+          showMessages: {
+            success: true,
+            error: true,
+          },
+        },
+        register: {
+          redirectDelay: 5000,
+          strategy: 'email',
+          showMessages: {
+            success: true,
+            error: true,
+          },
+          terms: false,
         },
       },
     }),
   ],
   providers: [
     AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: NbAuthJWTInterceptor, multi: true},
+    { provide: NB_AUTH_TOKEN_INTERCEPTOR_FILTER, useValue: function () { return false; } },
   ],
   bootstrap: [AppComponent],
 })
