@@ -47,19 +47,21 @@ import { environment } from '../environments/environment';
             key: 'token',
           },
           baseEndpoint: '',
-           login: {
-             // ...
-             endpoint: environment.baseUrl + 'auth/login',
-             method: 'post',
-           },
-           register: {
-             // ...
-             endpoint: environment.baseUrl + 'auth/register',
-             method: 'post',
-           },
-           logout: {
-            endpoint: environment.baseUrl + 'auth/sign-out',
+          login: {
+            // ...
+            endpoint: environment.baseUrl + 'auth/login',
             method: 'post',
+          },
+          register: {
+            // ...
+            endpoint: environment.baseUrl + 'auth/register',
+            method: 'post',
+            // tslint:disable-next-line: max-line-length
+            defaultMessages: ['Registration successful! Please activate your account by visiting the link in the confirmation email before logging in.'],
+          },
+          logout: {
+          endpoint: environment.baseUrl + 'auth/sign-out',
+          method: 'post',
           },
         }),
       ],
@@ -76,6 +78,15 @@ import { environment } from '../environments/environment';
         logout: {
           redirectDelay: 500,
           strategy: 'email',
+        },
+        register: {
+          redirectDelay: 5000,
+          strategy: 'email',
+          showMessages: {
+            success: true,
+            error: true,
+          },
+          terms: false,
         },
       },
     }),
