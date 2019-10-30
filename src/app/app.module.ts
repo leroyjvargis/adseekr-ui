@@ -61,8 +61,7 @@ import { environment } from '../environments/environment';
             defaultMessages: ['Registration successful! Please activate your account by visiting the link in the confirmation email before logging in.'],
           },
           logout: {
-            endpoint: environment.baseUrl + 'auth/sign-out',
-            method: 'post',
+            endpoint: '',
           },
         }),
       ],
