@@ -44,7 +44,6 @@ import { environment } from '../environments/environment';
           name: 'email',
           token: {
             class: NbAuthJWTToken,
-            key: 'token',
           },
           baseEndpoint: '',
           login: {
