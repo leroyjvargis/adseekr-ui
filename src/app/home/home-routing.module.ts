@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 
-import { SearchComponent } from './search/search.component';
-
 const routes: Routes = [{
   path: '',
   component: HomeComponent,

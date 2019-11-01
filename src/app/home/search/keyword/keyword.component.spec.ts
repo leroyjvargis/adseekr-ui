@@ -8,7 +8,7 @@ describe('KeywordComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KeywordComponent ]
+      declarations: [ KeywordComponent ],
     })
     .compileComponents();
   }));

@@ -18,11 +18,6 @@ const routes: Routes = [{
       path: 'domain',
       component: DomainComponent,
     },
-    // {
-    //   path: 'layout',
-    //   loadChildren: () => import('./layout/layout.module')
-    //     .then(m => m.LayoutModule),
-    // },
     {
       path: '',
       redirectTo: 'keyword',
