@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
+import { NbAuthService, NbAuthJWTToken } from '@nebular/auth';
 import { Router } from '@angular/router';
 // import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
@@ -44,9 +45,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private menuService: NbMenuService,
               private themeService: NbThemeService,
               // private userService: UserData,
+              private authService: NbAuthService,
               private router: Router,
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService) {
+                this.authService.onTokenChange().subscribe((token: NbAuthJWTToken) => {
+                  if (token.isValid()) {
+                    const val = token.getPayload();
+                    this.user['name'] = val['name'];
+                  }
+                });
   }
 
   ngOnInit() {
