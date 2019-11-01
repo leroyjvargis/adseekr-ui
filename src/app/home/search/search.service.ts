@@ -13,13 +13,23 @@ export class SearchService {
   constructor(private httpClient: HttpClient) {
   }
 
-  get(keyword: string) {
+  keyword(keyword: string) {
+    const url = environment.baseUrl + 'search/keyword?keyword=' + keyword;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
       }),
     };
+    return this.httpClient.get<Ad[]>(url, httpOptions);
+  }
 
-    return this.httpClient.get<Ad[]>(environment.baseUrl + 'search?keyword=' + keyword, httpOptions);
+  domain(domain: string) {
+    const url = environment.baseUrl + 'search/domain?domain=' + domain;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      }),
+    };
+    return this.httpClient.get<Ad[]>(url, httpOptions);
   }
 }
