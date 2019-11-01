@@ -2,11 +2,19 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'Search',
-    icon: 'home-outline',
-    link: '/home/search',
+    title: 'SEARCH',
+    group: true,
+  },
+  {
+    title: 'Keyword',
+    icon: 'search-outline',
+    link: '/home/search/keyword',
     home: true,
-
+  },
+  {
+    title: 'Domain',
+    icon: 'globe-outline',
+    link: '/home/search/domain',
   },
   // {
   //   title: 'FEATURES',
