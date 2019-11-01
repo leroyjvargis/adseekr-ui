@@ -12,13 +12,9 @@ const routes: Routes = [{
   children: [
     {
       path: 'search',
-      component: SearchComponent,
+      loadChildren: () => import('./search/search.module')
+        .then(m => m.SearchModule),
     },
-    // {
-    //   path: 'layout',
-    //   loadChildren: () => import('./layout/layout.module')
-    //     .then(m => m.LayoutModule),
-    // },
     {
       path: '',
       redirectTo: 'search',
