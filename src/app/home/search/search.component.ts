@@ -1,23 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Ad } from '../../@core/data/ad';
-import { SearchService } from './search.service';
+
 @Component({
   selector: 'ngx-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
+  template: `
+    <router-outlet></router-outlet>
+  `,
 })
 export class SearchComponent implements OnInit {
-  data: Ad[];
-  keyword: string;
-  constructor(private searchService: SearchService) { }
+
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  onSearchBtnClk() {
-    this.searchService.get(this.keyword).subscribe(data => {
-      this.data = data;
-    });
   }
 
 }
